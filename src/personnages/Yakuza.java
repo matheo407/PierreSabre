@@ -8,7 +8,7 @@ public class Yakuza extends Humain {
     public Yakuza(String nom, int argent, String clan) {
         super(nom, "whisky", argent); // La boisson préférée d'un yakuza est le whisky
         this.clan = clan;
-        this.reputation = 0; // Par défaut, la réputation est de 0
+        this.reputation = 4; // Par défaut, la réputation est de 0
     }
 
     // Méthodes
