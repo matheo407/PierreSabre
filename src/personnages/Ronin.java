@@ -15,7 +15,7 @@ public class Ronin extends Humain {
         dire("Marco prend ces " + montantDon + " sous.");
         perdreArgent(montantDon);
         beneficiaire.recevoir(montantDon);
-        
+
     }
 
     // Accesseurs et mutateurs si nécessaire
@@ -42,5 +42,4 @@ public class Ronin extends Humain {
             dire("J'ai perdu contre ce yakuza, mon honneur et ma bourse ont en pris un coup.");
         }
     }
-
 }

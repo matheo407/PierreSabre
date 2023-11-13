@@ -1,9 +1,14 @@
 package personnages;
 
+import java.util.ArrayList;
+
 public class Humain {
     private String nom;
-    private String boissonFavorite;
+    protected String boissonFavorite;
     private int argent;
+    private static final int MAX_CONNAISSANCES = 30;
+    protected ArrayList<Humain> connaissances = new ArrayList<>();
+    private int nbConnaissance = 0;
 
     // Constructeur
     public Humain(String nom, String boissonFavorite, int argent) {
@@ -32,10 +37,10 @@ public class Humain {
 
     public void acheter(String bien, int prix) {
         if (argent >= prix) {
-            parler("J'ai " + argent + " sous en poche. Je vais pouvoir m'offrir une " + bien + " à " + prix + " sous");
+            parler("J'ai " + argent + " sous en poche. Je vais pouvoir m'offrir " + bien + " à " + prix + " sous");
             argent -= prix;
         } else {
-            parler("Je n'ai plus que " + argent + " sous en poche. Je ne peux même pas m'offrir un " + bien + " à " + prix + " sous.");
+            parler("Je n'ai plus que " + argent + " sous en poche. Je ne peux même pas m'offrir " + bien + " à " + prix + " sous.");
         }
     }
 
@@ -47,11 +52,43 @@ public class Humain {
         argent -= perte;
     }
 
-    private void parler(String texte) {
+    protected void parler(String texte) {
         System.out.println("(" + nom + ") - " + texte);
     }
 
     public void dire(String texte) {
         parler(texte);
+    }
+    public void faireConnaissanceAvec(Humain autreHumain) {
+        direBonjour();
+        memoriser(autreHumain);
+        autreHumain.repondre(this);
+        autreHumain.memoriser(this);
+    }
+
+    private void memoriser(Humain humain) {
+        if (nbConnaissance == MAX_CONNAISSANCES) {
+            connaissances.remove(0); // Oublie la première connaissance
+        } else {
+            nbConnaissance++;
+        }
+        connaissances.add(humain);
+    }
+
+    private void repondre(Humain humain) {
+        direBonjour();
+    }
+    public void listerConnaissance() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Je connais beaucoup de monde dont : ");
+
+        for (int i = 0; i < connaissances.size(); i++) {
+            sb.append(connaissances.get(i).getNom());
+            if (i < connaissances.size() - 1) {
+                sb.append(", ");
+            }
+        }
+
+        dire(sb.toString());
     }
 }

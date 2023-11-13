@@ -8,7 +8,7 @@ public class Yakuza extends Humain {
     public Yakuza(String nom, int argent, String clan) {
         super(nom, "whisky", argent); // La boisson préférée d'un yakuza est le whisky
         this.clan = clan;
-        this.reputation = 4; // Par défaut, la réputation est de 0
+        this.reputation = 0; // Par défaut, la réputation est de 0
     }
 
     // Méthodes
@@ -44,4 +44,10 @@ public class Yakuza extends Humain {
         reputation++;
         dire("Ce ronin pensait vraiment battre " + getNom() + " du clan de " + clan + " ? Je l'ai dépouillé de ses " + gain + " sous !");
     }
+    @Override
+    public void direBonjour() {
+        super.direBonjour(); // Appelle la méthode direBonjour de la classe Humain
+        parler("Mon clan est celui de " + clan + "."); // Ajoute une ligne spécifique à Yakuza
+    }
+
 }

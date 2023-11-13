@@ -19,4 +19,10 @@ public class Commercant extends Humain {
         gagnerArgent(argent); // Utilisation de la méthode gagnerArgent de la classe mère
         dire(argent + " sous ! Je te remercie généreux donateur!");
     }
+ // Dans la classe Commercant
+    public void reagirARancon(String nomRanconneur) {
+        parler("Tout de suite grand " + nomRanconneur + ".");
+    }
+
+
 }
