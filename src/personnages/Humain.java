@@ -66,7 +66,7 @@ public class Humain {
         autreHumain.memoriser(this);
     }
 
-    private void memoriser(Humain humain) {
+    protected void memoriser(Humain humain) {
         if (nbConnaissance == MAX_CONNAISSANCES) {
             connaissances.remove(0); // Oublie la première connaissance
         } else {
